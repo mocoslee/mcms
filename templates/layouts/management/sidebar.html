@@ -1,0 +1,36 @@
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+              
+              	  <p class="centered"><a href="profile.html"><img src="{% static 'images/management/ui-sam.jpg' %}" class="img-circle" width="60"></a></p>
+              	  <h5 class="centered">信奇科技</h5>
+              	  	
+                  <li class="mt">
+                      <a class="active" href="index.html">
+                          <i class="fa fa-dashboard"></i>
+                          <span>Dashboard</span>
+                      </a>
+                  </li>
+
+            {% for item in nav.sidebar_iteritems %}
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-desktop"></i>
+			  <span>{{ item.node_name }}</span>
+                      </a>
+                      <ul class="sub">
+			  {% for node in item.nodes %}
+			  <li><a  href="{{ node.link }}">{{ node.title }}</a></li>
+			  {% endfor %}
+                      </ul>
+                  </li>
+	    {% endfor %}
+
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+

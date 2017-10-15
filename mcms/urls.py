@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic import RedirectView
+import ckeditor
+from mcms import views
 
 urlpatterns = [
+    url(r'^$', RedirectView.as_view(url='/login/',permanent=False)),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^logout/$', views.Logout.as_view(), name='logout'),
+    url(r'^login/$', views.LogIn.as_view(), name='login'),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^website/', include('website.urls',namespace="website")),
 ]
